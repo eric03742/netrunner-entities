@@ -4,7 +4,7 @@
     "module": "nodenext",
     "lib": ["ES2022", "DOM"],
     "moduleResolution": "node16",
-    "rootDir": ".",
+    "rootDir": "./src",
     "outDir": "dist",
 
     "allowUnreachableCode": false,
@@ -22,7 +22,7 @@
     "noUnusedParameters": true,
     "strict": true,
     "strictBindCallApply": true,
-    "strictBuiltinIteratorReturn": true,
+
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
@@ -37,7 +37,11 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "dist/types"
   },
   "include": ["src"]
 }
