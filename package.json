@@ -1,0 +1,32 @@
+{
+  "name": "@eric03742/netrunner-entities",
+  "version": "1.0.0",
+  "description": "《矩阵潜袭》中文数据库实体定义",
+  "main": "./dist/index.js",
+  "typings": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric03742/netrunner-entities.git"
+  },
+  "keywords": [
+    "Netrunner",
+    "ORM",
+    "database"
+  ],
+  "author": {
+    "name": "Eric03742",
+    "email": "eric03742@foxmail.com",
+    "url": "https://github.com/eric03742"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eric03742/netrunner-entities/issues"
+  },
+  "homepage": "https://github.com/eric03742/netrunner-entities#readme"
+}
