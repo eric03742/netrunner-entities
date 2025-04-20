@@ -18,3 +18,4 @@ export { SnapshotEntity } from "./entities/SnapshotEntity.js";
 export { CardEntity } from "./entities/CardEntity.js";
 export { PrintingEntity } from "./entities/PrintingEntity.js";
 export { RulingEntity } from "./entities/RulingEntity.js";
+export { NetrunnerDataSource } from "./data-source.js"
