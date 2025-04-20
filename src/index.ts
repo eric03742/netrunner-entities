@@ -1,6 +1,7 @@
 /**
  * 定义数据库表结构实体
  */
+import "reflect-metadata";
 
 export { BaseEntity, SEPARATOR } from "./entities/BaseEntity.js";
 export { SideEntity } from "./entities/SideEntity.js";
