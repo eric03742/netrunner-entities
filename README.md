@@ -1,12 +1,12 @@
 # netrunner-entities
 
-*《矩阵潜袭》中文数据库实体定义*
+*《矩阵潜袭》中文卡牌数据库实体定义*
 
 ## 简介
 
-`netrunner-entities` 使用 [TypeORM](https://typeorm.io/) 定义了《矩阵潜袭》中文数据库中所使用的表结构。
+`netrunner-entities` 使用 [TypeORM](https://typeorm.io/) 定义了《矩阵潜袭》中文卡牌数据库中所使用的表结构。
 
-`netrunner-entities` 可以作为需要访问《矩阵潜袭》中文数据库的项目的DAO实现。
+`netrunner-entities` 可以作为需要访问《矩阵潜袭》中文数据库的项目的DAO实现，也可以用于快速创建访问中文卡牌数据库的TypeORM数据源。
 
 ## 安装
 
@@ -18,7 +18,9 @@ npm install netrunner-entities --save
 
 ## 使用
 
-在项目中导入：
+### 使用数据库实体定义
+
+你可以直接使用 `netrunner-entities` 中定义的数据库实体定义类。只需在项目中导入：
 
 ```typescript
 import { CardEntity, PrintingEntity } from "netrunner-entities";
@@ -37,6 +39,24 @@ const printings = await repository.find({
 });
 
 for(const printing of printings) {
+    // ...
+}
+```
+
+### 使用TypeORM数据源
+
+`netrunner-entities` 提供了一个简单的 `DataSource` 的派生类 `NetrunnerDataSource`，用于快速创建一个可用于访问矩阵潜袭中文卡牌数据库的数据源。
+
+`NetrunnerDataSource` 已预先加载了 `netrunner-entities` 中所定义的所有实体，在构造时只需提供数据库地址、端口、用户名、密码、所用数据库名称等必要参数即可如一般的 `DataSource` 使用。
+
+```typescript
+import connection from "./data_source.json" with { type: "json" };
+
+const AppDataSource = new NetrunnerDataSource(connection);
+await AppDataSource.initialize();
+const database = AppDataSource.getRepository(Card);
+const cards = await database.find();
+for(const card of cards) {
     // ...
 }
 ```
@@ -240,7 +260,7 @@ FAQ是有关卡牌规则的详解。FAQ实体包含如下字段：
 
 ## 已知问题
 
-《矩阵潜袭》的早期环境包含MWL等特殊的禁限表，永恒环境包含“Eternal Point”这一特殊的禁限手段。这两种特殊的禁限表目前数据库中尚未收录。
+《矩阵潜袭》的早期环境包含MWL等特殊的禁限表，永恒环境包含“Eternal Point”这一特殊的禁限手段。这两种特殊的禁限表目前中文卡牌数据库中尚未收录。
 
 ## 许可证
 
