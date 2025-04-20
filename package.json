@@ -1,6 +1,6 @@
 {
   "name": "netrunner-entities",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "《矩阵潜袭》中文数据库实体定义",
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "mysql2": "^3.14.0",
+    "reflect-metadata": "^0.2.2",
     "tslib": "^2.8.1",
     "typeorm": "^0.3.22"
   },
