@@ -28,7 +28,7 @@ export class PoolEntity extends BaseEntity {
     set_codename_list: string = "";
 
     public get set_codenames(): string[] {
-        return this.set_codename_list.split(SEPARATOR);
+        return this.set_codename_list.length > 0 ? this.set_codename_list.split(SEPARATOR) : [];
     }
 
     /** 卡池包含循环ID */
@@ -36,6 +36,6 @@ export class PoolEntity extends BaseEntity {
     cycle_codename_list: string = "";
 
     public get cycle_codenames(): string[] {
-        return this.cycle_codename_list.split(SEPARATOR);
+        return this.cycle_codename_list.length > 0 ? this.cycle_codename_list.split(SEPARATOR) : [];
     }
 }

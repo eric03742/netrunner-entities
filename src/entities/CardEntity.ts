@@ -50,7 +50,7 @@ export class CardEntity extends BaseEntity {
     subtype_codename_list: string = "";
 
     public get subtype_codenames(): string[] {
-        return this.subtype_codename_list.split(SEPARATOR);
+        return this.subtype_codename_list.length > 0 ? this.subtype_codename_list.split(SEPARATOR) : [];
     }
 
     /** 卡牌阵营ID */

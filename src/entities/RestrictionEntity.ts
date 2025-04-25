@@ -32,7 +32,7 @@ export class RestrictionEntity extends BaseEntity {
     banned_card_codename_list: string = "";
 
     public get banned_card_codenames(): string[] {
-        return this.banned_card_codename_list.split(SEPARATOR);
+        return this.banned_card_codename_list.length > 0 ? this.banned_card_codename_list.split(SEPARATOR) : [];
     }
 
     /** 禁限表禁止子类型ID */
@@ -40,6 +40,6 @@ export class RestrictionEntity extends BaseEntity {
     banned_subtype_codename_list: string = "";
 
     public get banned_subtype_codenames(): string[] {
-        return this.banned_subtype_codename_list.split(SEPARATOR);
+        return this.banned_subtype_codename_list.length > 0 ? this.banned_subtype_codename_list.split(SEPARATOR) : [];
     }
 }
