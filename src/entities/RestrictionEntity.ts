@@ -1,6 +1,8 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, Relation } from "typeorm";
-import { BaseEntity, SEPARATOR } from "./BaseEntity.js";
+import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, Relation } from "typeorm";
+import { BaseEntity } from "./BaseEntity.js";
 import { FormatEntity } from "./FormatEntity.js";
+import {CardEntity} from "./CardEntity.js";
+import { SubtypeEntity } from "./SubtypeEntity.js";
 
 /** 数据库实体「禁限表」 */
 @Entity({ name: "restrictions" })
@@ -29,17 +31,17 @@ export class RestrictionEntity extends BaseEntity {
 
     /** 禁限表禁止卡牌ID */
     @Column({ type: "varchar", length: 5000 })
-    banned_card_codename_list: string = "";
+    banned_card_codenames: string = "";
 
-    public get banned_card_codenames(): string[] {
-        return this.banned_card_codename_list.length > 0 ? this.banned_card_codename_list.split(SEPARATOR) : [];
-    }
+    @ManyToMany(() => CardEntity)
+    @JoinTable()
+    banned_cards!: Relation<CardEntity>[];
 
     /** 禁限表禁止子类型ID */
     @Column({ type: "varchar", length: 5000 })
-    banned_subtype_codename_list: string = "";
+    banned_subtype_codenames: string = "";
 
-    public get banned_subtype_codenames(): string[] {
-        return this.banned_subtype_codename_list.length > 0 ? this.banned_subtype_codename_list.split(SEPARATOR) : [];
-    }
+    @ManyToMany(() => SubtypeEntity)
+    @JoinTable()
+    banned_subtypes!: Relation<SubtypeEntity>[];
 }

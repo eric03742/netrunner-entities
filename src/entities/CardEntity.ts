@@ -1,10 +1,11 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
-import { BaseEntity, SEPARATOR } from "./BaseEntity.js";
+import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, Relation } from "typeorm";
+import { BaseEntity } from "./BaseEntity.js";
 import { TypeEntity } from "./TypeEntity.js";
 import { SideEntity } from "./SideEntity.js";
 import { FactionEntity } from "./FactionEntity.js";
 import { RulingEntity } from "./RulingEntity.js";
 import { PrintingEntity } from "./PrintingEntity.js";
+import {SubtypeEntity} from "./SubtypeEntity.js";
 
 /** 数据库实体「卡牌」 */
 @Entity({ name: "cards" })
@@ -49,11 +50,11 @@ export class CardEntity extends BaseEntity {
 
     /** 卡牌子类型ID */
     @Column()
-    subtype_codename_list: string = "";
+    subtype_codenames: string = "";
 
-    public get subtype_codenames(): string[] {
-        return this.subtype_codename_list.length > 0 ? this.subtype_codename_list.split(SEPARATOR) : [];
-    }
+    @ManyToMany(() => SubtypeEntity)
+    @JoinTable()
+    subtypes!: Relation<SubtypeEntity>[];
 
     /** 卡牌阵营ID */
     @Column()

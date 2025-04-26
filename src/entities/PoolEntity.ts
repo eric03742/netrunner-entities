@@ -1,6 +1,8 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, Relation } from "typeorm";
-import { BaseEntity, SEPARATOR } from "./BaseEntity.js";
+import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, Relation } from "typeorm";
+import { BaseEntity } from "./BaseEntity.js";
 import { FormatEntity } from "./FormatEntity.js";
+import { SetEntity } from "./SetEntity.js";
+import { CycleEntity } from "./CycleEntity.js";
 
 /** 数据库实体「卡池」 */
 @Entity({ name: "pools" })
@@ -25,17 +27,17 @@ export class PoolEntity extends BaseEntity {
 
     /** 卡池包含卡包ID */
     @Column({ type: "varchar", length: 5000 })
-    set_codename_list: string = "";
+    set_codenames: string = "";
 
-    public get set_codenames(): string[] {
-        return this.set_codename_list.length > 0 ? this.set_codename_list.split(SEPARATOR) : [];
-    }
+    @ManyToMany(() => SetEntity)
+    @JoinTable()
+    sets!: Relation<SetEntity>[];
 
     /** 卡池包含循环ID */
     @Column({ type: "varchar", length: 5000 })
-    cycle_codename_list: string = "";
+    cycle_codenames: string = "";
 
-    public get cycle_codenames(): string[] {
-        return this.cycle_codename_list.length > 0 ? this.cycle_codename_list.split(SEPARATOR) : [];
-    }
+    @ManyToMany(() => CycleEntity)
+    @JoinTable()
+    cycles!: Relation<CycleEntity>[];
 }

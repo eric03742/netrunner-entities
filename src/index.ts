@@ -3,7 +3,7 @@
  */
 import "reflect-metadata";
 
-export { BaseEntity, SEPARATOR } from "./entities/BaseEntity.js";
+export { BaseEntity } from "./entities/BaseEntity.js";
 export { SideEntity } from "./entities/SideEntity.js";
 export { FactionEntity } from "./entities/FactionEntity.js";
 export { TypeEntity } from "./entities/TypeEntity.js";

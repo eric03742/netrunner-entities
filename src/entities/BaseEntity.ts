@@ -5,5 +5,3 @@ export abstract class BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 }
-
-export const SEPARATOR: string = "|||";
