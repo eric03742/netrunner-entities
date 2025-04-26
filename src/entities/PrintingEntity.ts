@@ -16,7 +16,7 @@ export class PrintingEntity extends BaseEntity {
     card_codename: string = "";
 
     /** 卡图卡牌 */
-    @ManyToOne(() => CardEntity)
+    @ManyToOne(() => CardEntity, (card) => card.printings)
     @JoinColumn({ name: "card_id" })
     card!: Relation<CardEntity>;
 

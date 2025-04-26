@@ -22,7 +22,7 @@ export class RulingEntity extends BaseEntity {
     card_codename: string = "";
 
     /** FAQ所属卡牌 */
-    @ManyToOne(() => CardEntity)
+    @ManyToOne(() => CardEntity, (card) => card.rulings)
     @JoinColumn({ name: "card_id" })
     card!: Relation<CardEntity>;
 

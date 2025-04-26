@@ -21,7 +21,7 @@ export class SnapshotEntity extends BaseEntity {
     format_codename: string = "";
 
     /** 环境所属赛制 */
-    @ManyToOne(() => FormatEntity)
+    @ManyToOne(() => FormatEntity, (format) => format.snapshots)
     @JoinColumn({ name: "format_id" })
     format!: Relation<FormatEntity>;
 

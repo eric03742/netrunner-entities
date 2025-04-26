@@ -1,8 +1,10 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, Relation } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { BaseEntity, SEPARATOR } from "./BaseEntity.js";
 import { TypeEntity } from "./TypeEntity.js";
 import { SideEntity } from "./SideEntity.js";
 import { FactionEntity } from "./FactionEntity.js";
+import { RulingEntity } from "./RulingEntity.js";
+import { PrintingEntity } from "./PrintingEntity.js";
 
 /** 数据库实体「卡牌」 */
 @Entity({ name: "cards" })
@@ -142,4 +144,10 @@ export class CardEntity extends BaseEntity {
     /** 卡牌额外牌面数 */
     @Column()
     extra_face: number = 0;
+
+    @OneToMany(() => RulingEntity, (ruling) => ruling.card)
+    rulings!: Relation<RulingEntity>[];
+
+    @OneToMany(() => PrintingEntity, (printing) => printing.card)
+    printings!: Relation<PrintingEntity>[];
 }

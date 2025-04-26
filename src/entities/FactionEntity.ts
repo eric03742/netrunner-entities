@@ -39,7 +39,7 @@ export class FactionEntity extends BaseEntity {
     side_codename: string = "";
 
     /** 派系所属阵营 */
-    @ManyToOne(() => SideEntity)
+    @ManyToOne(() => SideEntity, (side) => side.factions)
     @JoinColumn({ name: "side_id" })
     side!: Relation<SideEntity>;
 }

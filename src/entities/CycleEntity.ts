@@ -1,5 +1,6 @@
-import { Column, Entity, Index } from "typeorm";
+import { Column, Entity, Index, OneToMany, Relation } from "typeorm";
 import { BaseEntity } from "./BaseEntity.js";
+import { SetEntity } from "./SetEntity.js";
 
 /** 数据库实体「循环」 */
 @Entity({ name: "cycles" })
@@ -24,4 +25,8 @@ export class CycleEntity extends BaseEntity {
     /** 循环发行组 */
     @Column()
     released_by: string = "";
+
+    /** 属于本循环的卡包 */
+    @OneToMany(() => SetEntity, (set) => set.cycle)
+    sets!: Relation<SetEntity>[];
 }

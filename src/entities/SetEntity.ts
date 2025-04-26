@@ -25,7 +25,7 @@ export class SetEntity extends BaseEntity {
     cycle_codename: string = "";
 
     /** 卡包所属循环 */
-    @ManyToOne(() => CycleEntity)
+    @ManyToOne(() => CycleEntity, (cycle) => cycle.sets)
     @JoinColumn({ name: "cycle_id" })
     cycle!: Relation<CycleEntity>;
 
