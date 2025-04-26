@@ -70,6 +70,7 @@ for(const card of cards) {
 * **codename**：阵营唯一标识
 * **oracle_name**：阵营英文名称
 * **locale_name**：阵营中文名称
+* **factions**：属于本阵营的派系实体
 
 ### 派系/Faction
 
@@ -122,6 +123,7 @@ for(const card of cards) {
 * **locale_name**：循环中文名称
 * **position**：循环序号
 * **released_by**：发行组
+* **sets**：属于本循环的卡包实体
 
 ### 卡包/Set
 
@@ -146,6 +148,7 @@ for(const card of cards) {
 * **codename**：赛制唯一标识
 * **oracle_name**：赛制英文名称
 * **locale_name**：赛制本地化名称
+* **snapshots**：属于本赛制的环境实体
 
 ### 卡池/Pool
 
@@ -155,10 +158,10 @@ for(const card of cards) {
 * **oracle_name**：卡池英文名称
 * **format_codename**：卡池所属赛制标识
 * **format**：卡池所属赛制实体
-* **set_codename_list**：卡池中包含的卡包标识列表（序列化为字符串形式）
-* **set_codenames**：卡池中包含的卡包标识列表
-* **cycle_codename_list**：卡池中包含的循环标识列表（序列化为字符串形式）
-* **cycle_codenames**：卡池中包含的循环标识列表
+* **set_codenames**：属于本卡池的卡包的标识列表（序列化为字符串形式，以逗号分隔）
+* **sets**：属于本卡池的卡包实体
+* **cycle_codenames**：属于本卡池的循环的标识列表（序列化为字符串形式，以逗号分隔）
+* **cycles**：属于本卡池的循环实体
 
 ### 禁限表/Restriction
 
@@ -169,10 +172,10 @@ for(const card of cards) {
 * **formate_codename**：禁限表所属赛制标识
 * **format**：禁限表所属赛制实体
 * **start_date**：禁限表开始生效日期
-* **banned_card_codename_list**：禁限表中禁止使用的卡牌标识列表（序列化为字符串形式）
-* **banned_card_codenames**：禁限表中禁止使用的卡牌标识列表
-* **banned_subtype_codename_list**：禁限表中禁止使用的卡牌子类型标识列表（序列化为字符串形式）
-* **banned_subtype_codenames**：禁限表中禁止使用的卡牌子类型标识列表
+* **banned_card_codenames**：属于本禁限表的卡牌的标识列表（序列化为字符串形式，以逗号分隔）
+* **banned_cards**：属于本禁限表的卡牌
+* **banned_subtype_codenames**：属于本禁限表的卡牌子类型的卡牌子类型标识列表（序列化为字符串形式，以逗号分隔）
+* **banned_subtypes**：属于本禁限表的卡牌子类型
 
 ### 环境/Snapshot
 
@@ -201,8 +204,8 @@ for(const card of cards) {
 * **stripped_text**：卡牌无符号英文文本
 * **type_codename**：卡牌类型标识
 * **type**：卡牌类型实体
-* **subtype_codename_list**：卡牌子类型标识列表（序列化为字符串形式）
-* **subtype_codenames**：卡牌子类型标识列表
+* **subtype_codenames**：卡牌子类型标识列表（序列化为字符串形式，以逗号分隔）
+* **subtypes**：卡牌子类型实体列表
 * **side_codename**：卡牌阵营标识
 * **side**：卡牌阵营实体
 * **faction_codename**：卡牌派系标识
@@ -225,6 +228,8 @@ for(const card of cards) {
 * **pronunciation_ipa**：卡牌读音（国际音标）
 * **pronunciation_approx**：卡牌读音（英文音标）
 * **extra_face**：卡牌额外牌面数
+* **printings**：属于本卡牌的卡图实体
+* **rulings**：属于本卡牌的FAQ实体
 
 ### 卡图/Printing
 
