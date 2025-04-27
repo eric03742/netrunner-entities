@@ -146,9 +146,11 @@ export class CardEntity extends BaseEntity {
     @Column()
     extra_face: number = 0;
 
+    /** 属于本卡图的FAQ */
     @OneToMany(() => RulingEntity, (ruling) => ruling.card)
     rulings!: Relation<RulingEntity>[];
 
+    /** 属于本卡牌的卡图 */
     @OneToMany(() => PrintingEntity, (printing) => printing.card)
     printings!: Relation<PrintingEntity>[];
 }

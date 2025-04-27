@@ -25,7 +25,7 @@ export class PrintingEntity extends BaseEntity {
     set_codename: string = "";
 
     /** 卡图所属卡包 */
-    @ManyToOne(() => SetEntity)
+    @ManyToOne(() => SetEntity, (set) => set.printings)
     @JoinColumn({ name: "set_id" })
     set!: Relation<SetEntity>;
 

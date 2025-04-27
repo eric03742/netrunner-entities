@@ -1,7 +1,8 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, Relation } from "typeorm";
+import {Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, Relation} from "typeorm";
 import { BaseEntity } from "./BaseEntity.js";
 import { CycleEntity } from "./CycleEntity.js";
 import { SettypeEntity } from "./SettypeEntity.js";
+import {PrintingEntity} from "./PrintingEntity.js";
 
 
 /** 数据库实体「卡包」 **/
@@ -53,4 +54,8 @@ export class SetEntity extends BaseEntity {
     /** 卡包发行组 */
     @Column()
     released_by: string = "";
+
+    /** 属于本卡包的卡图 */
+    @OneToMany(() => PrintingEntity, (printing) => printing.set)
+    printings!: Relation<PrintingEntity>[];
 }
