@@ -29,6 +29,7 @@ export class PoolEntity extends BaseEntity {
     @Column({ type: "varchar", length: 5000 })
     set_codenames: string = "";
 
+    /** 属于本卡池的卡包 */
     @ManyToMany(() => SetEntity)
     @JoinTable()
     sets!: Relation<SetEntity>[];
@@ -37,6 +38,7 @@ export class PoolEntity extends BaseEntity {
     @Column({ type: "varchar", length: 5000 })
     cycle_codenames: string = "";
 
+    /** 属于本卡池的循环 */
     @ManyToMany(() => CycleEntity)
     @JoinTable()
     cycles!: Relation<CycleEntity>[];

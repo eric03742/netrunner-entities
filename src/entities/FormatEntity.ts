@@ -18,6 +18,7 @@ export class FormatEntity extends BaseEntity {
     @Column()
     locale_name: string = "";
 
+    /** 属于本赛制的环境 */
     @OneToMany(() => SnapshotEntity, (snapshot) => snapshot.format)
     snapshots!: Relation<SnapshotEntity>[];
 }

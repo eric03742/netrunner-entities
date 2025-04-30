@@ -33,6 +33,7 @@ export class RestrictionEntity extends BaseEntity {
     @Column({ type: "varchar", length: 5000 })
     banned_card_codenames: string = "";
 
+    /** 禁限表禁止卡牌 */
     @ManyToMany(() => CardEntity)
     @JoinTable()
     banned_cards!: Relation<CardEntity>[];
@@ -41,6 +42,7 @@ export class RestrictionEntity extends BaseEntity {
     @Column({ type: "varchar", length: 5000 })
     banned_subtype_codenames: string = "";
 
+    /** 禁限表禁止子类型 */
     @ManyToMany(() => SubtypeEntity)
     @JoinTable()
     banned_subtypes!: Relation<SubtypeEntity>[];
