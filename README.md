@@ -13,7 +13,7 @@
 使用 `npm` 安装：
 
 ```shell
-npm install netrunner-entities --save
+npm install @eric03742/netrunner-entities --save
 ```
 
 ## 使用
@@ -29,7 +29,7 @@ import { CardEntity, PrintingEntity } from "netrunner-entities";
 之后即可作为 `typeorm` 的实体使用：
 
 ```typescript
-import { CardEntity, PrintingEntity } from "netrunner-entities";
+import { CardEntity, PrintingEntity } from "@eric03742/netrunner-entities";
 import { AppDataSource } from "./data-source.js";
 
 const repository = AppDataSource.getRepository(PrintingEntity);
@@ -45,16 +45,16 @@ for(const printing of printings) {
 
 ### 使用TypeORM数据源
 
-`netrunner-entities` 提供了一个简单的 `DataSource` 的派生类 `NetrunnerDataSource`，用于快速创建一个可用于访问矩阵潜袭中文卡牌数据库的数据源。
+`netrunner-entities` 提供了一个简单数据源工厂类 `NetrunnerDataSource`，你可以通过 `NetrunnerDataSource.create()` 方法创建一个用于访问矩阵潜袭中文卡牌数据库的SQLite数据源。
 
-`NetrunnerDataSource` 已预先加载了 `netrunner-entities` 中所定义的所有实体，在构造时只需提供数据库地址、端口、用户名、密码、所用数据库名称等必要参数即可如一般的 `DataSource` 使用。
+`NetrunnerDataSource` 已预先加载了 `netrunner-entities` 中所定义的所有实体，在构造时只需提供数据库名称即可如一般的 `DataSource` 数据源类使用。
 
 ```typescript
-import connection from "./data_source.json" with { type: "json" };
+import { NetrunnerDataSource, CardEntity } from "@eric03742/netrunner-entities";
 
-const AppDataSource = new NetrunnerDataSource(connection);
+const AppDataSource = NetrunnerDataSource.create("netrunner.sqlite");
 await AppDataSource.initialize();
-const database = AppDataSource.getRepository(Card);
+const database = AppDataSource.getRepository(CardEntity);
 const cards = await database.find();
 for(const card of cards) {
     // ...
@@ -140,6 +140,7 @@ for(const card of cards) {
 * **position**：卡包在循环中序号
 * **size**：卡包中卡牌数量
 * **released_by**：发行组
+* **printings**：属于本卡包的卡图
 
 ### 赛制/Format
 
