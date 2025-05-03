@@ -32,9 +32,6 @@
     "url": "https://github.com/eric03742/netrunner-entities/issues"
   },
   "homepage": "https://github.com/eric03742/netrunner-entities#readme",
-  "engines": {
-    "node": ">= 22.11 < 23"
-  },
   "dependencies": {
     "better-sqlite3": "^11.9.1",
     "reflect-metadata": "^0.2.2",
@@ -42,7 +39,7 @@
     "typeorm": "^0.3.22"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.3",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
   }
