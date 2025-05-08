@@ -1,7 +1,7 @@
 {
-  "name": "@eric03742/netrunner-entities",
+  "name": "netrunner-entities",
   "version": "1.1.0",
-  "description": "《矩阵潜袭》中文数据库实体定义",
+  "description": "《矩阵潜袭》中文卡牌数据库实体定义",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
