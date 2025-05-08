@@ -1,5 +1,9 @@
 # netrunner-entities
 
+![](https://img.shields.io/npm/l/netrunner-entities) |
+![](https://img.shields.io/npm/v/netrunner-entities) |
+![](https://img.shields.io/npm/types/netrunner-entities)
+
 *《矩阵潜袭》中文卡牌数据库实体定义*
 
 ## 简介
@@ -13,7 +17,7 @@
 使用 `npm` 安装：
 
 ```shell
-npm install @eric03742/netrunner-entities --save
+npm install netrunner-entities --save
 ```
 
 ## 使用
@@ -29,8 +33,8 @@ import { CardEntity, PrintingEntity } from "netrunner-entities";
 之后即可作为 `typeorm` 的实体使用：
 
 ```typescript
-import { CardEntity, PrintingEntity } from "@eric03742/netrunner-entities";
-import { AppDataSource } from "./data-source.js";
+import { CardEntity, PrintingEntity } from "netrunner-entities";
+import { AppDataSource } from "./data-source";
 
 const repository = AppDataSource.getRepository(PrintingEntity);
 const printings = await repository.find({
@@ -50,7 +54,7 @@ for(const printing of printings) {
 `NetrunnerDataSource` 已预先加载了 `netrunner-entities` 中所定义的所有实体，在构造时只需提供数据库名称即可如一般的 `DataSource` 数据源类使用。
 
 ```typescript
-import { NetrunnerDataSource, CardEntity } from "@eric03742/netrunner-entities";
+import { NetrunnerDataSource, CardEntity } from "netrunner-entities";
 
 const AppDataSource = NetrunnerDataSource.create("netrunner.sqlite");
 await AppDataSource.initialize();
