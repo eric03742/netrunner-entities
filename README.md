@@ -47,24 +47,6 @@ for(const printing of printings) {
 }
 ```
 
-### 使用TypeORM数据源
-
-`netrunner-entities` 提供了一个简单数据源工厂类 `NetrunnerDataSource`，你可以通过 `NetrunnerDataSource.create()` 方法创建一个用于访问矩阵潜袭中文卡牌数据库的SQLite数据源。
-
-`NetrunnerDataSource` 已预先加载了 `netrunner-entities` 中所定义的所有实体，在构造时只需提供数据库名称即可如一般的 `DataSource` 数据源类使用。
-
-```typescript
-import { NetrunnerDataSource, CardEntity } from "netrunner-entities";
-
-const AppDataSource = NetrunnerDataSource.create("netrunner.sqlite");
-await AppDataSource.initialize();
-const database = AppDataSource.getRepository(CardEntity);
-const cards = await database.find();
-for(const card of cards) {
-    // ...
-}
-```
-
 ## 数据结构
 
 ### 阵营/Side

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import {
-    Column, DataSource, Entity, Index,
+    Column, Entity, Index,
     JoinColumn, JoinTable, ManyToMany, ManyToOne,
     OneToMany, PrimaryGeneratedColumn, Relation
 } from "typeorm";
@@ -624,28 +624,4 @@ export class RulingEntity extends BaseEntity {
     /** FAQ验证性 */
     @Column()
     nsg_verified: boolean = false;
-}
-
-
-/** 一个简单的工厂类，用于创建连接至数据库的数据源实体 */
-export abstract class NetrunnerDataSource {
-    /** 工厂函数，参数为数据库名称 */
-    public static create(database: string): DataSource {
-        return new DataSource({
-            database: database,
-            type: "better-sqlite3",
-            logging: [
-                "error", "warn", "info", "log"
-            ],
-            entities: [
-                SideEntity, FactionEntity, TypeEntity, SubtypeEntity,
-                SettypeEntity, CycleEntity, SetEntity,
-                FormatEntity, PoolEntity, RestrictionEntity, SnapshotEntity,
-                CardEntity, PrintingEntity, RulingEntity
-            ],
-            prepareDatabase: db => {
-                db.pragma('journal_mode = WAL');
-            },
-        });
-    }
 }
